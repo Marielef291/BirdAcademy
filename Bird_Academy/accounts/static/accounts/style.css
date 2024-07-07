@@ -1,0 +1,56 @@
+*{
+    /* margin: 0 ; */
+    /* padding: 0; */
+    background-color: #ece9e9;
+    text-align: center;
+
+}
+
+h1{
+    /* color: red; */
+}
+
+
+form ul li{
+    font-style: italic;
+    color: 	#666;
+    /* display: none; */
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 100%;
+    /* justify-content: center; */
+}
+
+form p input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Pour inclure le padding et les bordures dans la largeur */
+    max-width: 300px;
+}
+
+form p .helptext {
+    /* display: none; */
+    margin-top: 5px;
+    color: #666;
+}
+
+/* form p input:focus + .helptext,
+form p input:focus-within + .helptext {
+    display: block;
+} */
+
+label {
+    margin-bottom: 5px;
+}
