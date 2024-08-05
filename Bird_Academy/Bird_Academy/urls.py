@@ -20,6 +20,8 @@ from Application import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home, name="home"),
+    path('', views.home, name="home"),
+    path('addBird/', views.addBird, name="addBird"),
+    path('quizz/', views.quizz, name="quizz"),
     path('accounts/', include('accounts.urls')),
 ]

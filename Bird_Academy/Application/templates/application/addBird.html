@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'application/style_select.css' %}">
+</head>
+<body>
+    <h1>Ajouter les oiseaux</h1>
+
+    <form id="birdForm" action="" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="custom-select">
+                <div class="select-box">
+                    <input type="text" class="tags_input" name="tags" hidden />
+                    <div class="selected-options">
+                        
+                    </div>
+                    <div class="arrow">
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option-search-tags">
+                        <input type="text" class="search-tags" placeholder="Search tags ..." />
+                        <button type="button" class="clear"><i class="fa fa-close"></i></button>
+                    </div>
+                    <div class="option all-tags" data-value="All">Select All</div>
+                    {% for bird in nameBird %}
+                        <div class="option {% if bird.id in userBirds %}active{% endif %}" data-value="{{ bird.id }}" >
+                            {% if bird.Fr_name %}
+                                {{ bird.Fr_name }} -
+                            {% endif %}
+                            <i>{{ bird.Latin_name }}</i>
+                        </div>
+                    {% endfor %}
+                    <div class="no-result-message" style="display:none">No result match</div>
+                </div>
+                <span class="tag_error_msg error"></span>
+            </div>
+            <input type="submit" class="btn_submit" value="Submit">
+        </div>
+    </form>
+
+    <p><a href="{% url 'home' %}">Retour à l'accueil</a></p>
+
+    <script src="{% static 'application/script_select.js' %}"></script>
+</body>
+</html>
