@@ -1,17 +1,7 @@
-{% comment %} {% if user.is_authenticated %}
-    <p>Connecté sous {{user.username}} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
-    {% else %}
-    <p><a href="{% url 'accounts:login' %}">Connexion</a>
-    <a href="{% url 'accounts:register' %}">Inscription</a></p>
-{% endif %} {% endcomment %}
 <p>Connecté sous {{user.username}} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
 
 
 <h1>Bird Academy</h1>
 
-{% comment %} <audio controls>
-    <source src="https://xeno-canto.org/902756/download" type="audio/mpeg">
-    Ton navigateur ne supporte pas la balise audio.
-</audio> {% endcomment %}
     <p><a href="{% url 'addBird' %}">Ajouter oiseaux</a></p>
     <p><a href="{% url 'quizz' %}">Test connaissance</a></p>

@@ -24,4 +24,6 @@ urlpatterns = [
     path('addBird/', views.addBird, name="addBird"),
     path('quizz/', views.quizz, name="quizz"),
     path('accounts/', include('accounts.urls')),
+    path('api/user_birds/', views.get_user_birds, name='get_user_birds'),
+    path('api/user_songs/', views.get_song_birds_user, name='get_song_birds_user'),
 ]

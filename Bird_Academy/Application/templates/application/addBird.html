@@ -1,16 +1,14 @@
+{% extends "Application/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bird Academy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link href="https://fonts.googleapis.com/css2?family=REM&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'application/style_select.css' %}">
-</head>
-<body>
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link href="https://fonts.googleapis.com/css2?family=REM&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'application/style_select.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
     <h1>Ajouter les oiseaux</h1>
 
     <form id="birdForm" action="" method="post">
@@ -33,12 +31,12 @@
                     </div>
                     <div class="option all-tags" data-value="All">Select All</div>
                     {% for bird in nameBird %}
-                        <div class="option {% if bird.id in userBirds %}active{% endif %}" data-value="{{ bird.id }}" >
+                    <div class="option {% if bird.id in userBirds %}active{% endif %}" data-value="{{ bird.id }}" >
                             {% if bird.Fr_name %}
-                                {{ bird.Fr_name }} -
+                                {{ bird.Fr_name }}
                             {% endif %}
-                            <i>{{ bird.Latin_name }}</i>
                         </div>
+                        
                     {% endfor %}
                     <div class="no-result-message" style="display:none">No result match</div>
                 </div>
@@ -50,6 +48,8 @@
 
     <p><a href="{% url 'home' %}">Retour à l'accueil</a></p>
 
-    <script src="{% static 'application/script_select.js' %}"></script>
-</body>
-</html>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'application/script_select.js' %}"></script>
+{% endblock extra_js %}

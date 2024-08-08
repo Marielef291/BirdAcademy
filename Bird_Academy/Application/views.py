@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect 
 from django.contrib.auth.decorators import login_required
 from Application.models import Bird, Song
+from django.http import JsonResponse
 
 
 @login_required(redirect_field_name="login")
@@ -66,8 +67,20 @@ def addBird(request):
     })
 
 
-
-
 @login_required(redirect_field_name="login")
 def quizz (request) :
     return render (request, 'application/quizz.html')
+
+
+
+@login_required(redirect_field_name="login")
+def get_user_birds(request):
+    user_birds = Bird.objects.filter(User_Bird=request.user).values('id','Latin_name', 'Fr_name', 'Eng_name')
+    return JsonResponse(list(user_birds), safe=False)
+
+@login_required(redirect_field_name="login")
+def get_song_birds_user(request):
+    user_birds = Bird.objects.filter(User_Bird=request.user)
+    song_birds = Song.objects.filter(Id_bird__in=user_birds).values('Id_bird', 'List_Other_Birds', 'URL_Song')
+    
+    return JsonResponse(list(song_birds), safe=False)
