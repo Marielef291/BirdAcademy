@@ -1,14 +1,33 @@
-<h1>Connexion</h1>
+{% extends "Application/base.html" %}
+{% load static %}
 
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
     {% for message in messages %}
-        <p>{{ message }}</p>
+        <p class="msg_error">{{ message }}</p>
     {% endfor %}
 
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Se connecter">
+        <div class="form-floating">
+            <input type="text" id="username" name="username" placeholder="" required>
+            <label for="username">Nom d'utilisateur</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" id="password" name="password" placeholder="" required>
+            <label for="password">Mot de passe</label>
+        </div>
+        <input class="custom-button btn_fonce" type="submit" value="Connexion">
     </form>
 
-    <br><br>
+
     <p><a href="{% url 'accounts:register' %}">Pas encore de compte ?</a></p>
+
+    {% endblock content %}
+
+{% block extra_js %}
+
+{% endblock extra_js %}

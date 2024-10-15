@@ -2,10 +2,10 @@ let apiUserBird = '/api/user_birds/'
 let apiSongBird = '/api/user_songs/'
 let donneeUserBird = []
 let donneSongBird = []
-var mainElement = document.querySelector('.main')
-var container = document.querySelector('.container')
-var numberSpan = document.getElementById('number')
-var currentNumber = 5 // Valeur par défaut
+let mainElement = document.querySelector('.main')
+let container = document.querySelector('.container')
+let numberSpan = document.getElementById('number')
+let currentNumber = 5 // Valeur par défaut
 let maxNumber = 3 // Valeur par défaut au cas où la requête échoue
 
 function updateNumber() {
@@ -69,8 +69,8 @@ function entreeQuizz() {
 async function quizz(nbrTour) {
     mainElement.innerHTML = '<div class="audio"></div><div class="reponse"></div>';
     
-    var audio = document.querySelector('.audio');
-    var reponse = document.querySelector('.reponse');
+    let audio = document.querySelector('.audio');
+    let reponse = document.querySelector('.reponse');
 
     for (let i = 0; i < nbrTour; i++) {
         audio.innerHTML = ' ';

@@ -1,14 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/css/multi-select-tag.css"> {% endcomment %}
+    
     <title>Bird Academy</title>
+    <link rel="stylesheet" href="{% static 'application/style.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    {% block content %}{% endblock  %}
-    {% block extra_js %}{% endblock %}
+    <main>
+        <img id='logo' src="{% static 'application/images/logo_transparant.png' %}" alt="Logo Bird Academy" />
+        {% block content %}{% endblock  %}
+        {% block extra_js %}{% endblock %}
+    </main>
 </body>
 </html>

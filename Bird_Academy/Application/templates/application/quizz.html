@@ -1,14 +1,14 @@
-{% extends "Application/base.html" %}
+{% extends "Application/base_interne.html" %}
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'application/style_quizz.css' %}">
+     <link rel="stylesheet" href="{% static 'application/style_quizz.css' %}"> 
 {% endblock extra_css %}
 
 {% block content %}
     <h1>Test connaissance</h1>
 
-    <div class="main">
+<div class="main">
         <p>Sur combien de chants voulez-vous être testé ? </p>
         <span>(entre 3 et <p id="maxQuizz" style="display:inline;"></p> (c-a-d le nombre d'oiseaux que vous avez enregistrés dans votre liste))</span>       
         <div class="container">
@@ -19,10 +19,10 @@
             </div>
         </div>
         <button type="submit" id="valider">Commencez le test</button>
-    </div>
+    </div> 
     
     
-    <p><a href="{% url 'home' %}">Retour à l'accueil</a></p>
+    <p><a href="{% url 'home' %}">Retour à l'accueil</a></p> 
 {% endblock content %}
 
 {% block extra_js %}

@@ -1,16 +1,93 @@
+{% extends "Application/base.html" %}
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'accounts/style.css' %}" />
-</head>
-<h1>Inscription</h1>
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Je m'inscris !">
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<br><br>
-<p><a href="{% url 'accounts:login' %}">Déjà Inscrits ?</a></p>
+{% endblock extra_css %}
 
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
 
-</form>
+        <div class="form-container">
+            <div class="form-grid">
+                <div class="form-group">
+                    <div class="form-floating">
+                        <input type="text" id="id_username" name="username" placeholder="" required>
+                        <label for="id_username">Nom d'utilisateur</label>
+                    </div>
+                    {% if form.username.help_text %}
+                        <span class="tooltip"><i class="fa-solid fa-circle-info"></i>
+                            <span class="tooltiptext">{{ form.username.help_text }}</span>
+                        </span>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                </div>
+                {% if form.username.errors %}
+                    <div class="error-message">{{ form.username.errors }}</div>
+                {% endif %}
+
+                <div class="form-group">
+                    <div class="form-floating">
+                        <input type="email" id="id_email" name="email" placeholder="" required>
+                        <label for="id_email">Adresse email</label>
+                    </div>
+                    {% if form.email.help_text %}
+                        <span class="tooltip"><i class="fa-solid fa-circle-info"></i>
+                            <span class="tooltiptext">{{ form.email.help_text }}</span>
+                        </span>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                </div>
+                {% if form.email.errors %}
+                    <div class="error-message">{{ form.email.errors }}</div>
+                {% endif %}
+
+                <div class="form-group">
+                    <div class="form-floating">
+                        <input type="password" id="id_password1" name="password1" placeholder="" required>
+                        <label for="id_password1">Mot de passe</label>
+                    </div>
+                    {% if form.password1.help_text %}
+                        <span class="tooltip"><i class="fa-solid fa-circle-info"></i>
+                            <span class="tooltiptext">{{ form.password1.help_text }}</span>
+                        </span>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                </div>
+                {% if form.password1.errors %}
+                    <div class="error-message">{{ form.password1.errors }}</div>
+                {% endif %}
+
+                <div class="form-group">
+                    <div class="form-floating">
+                        <input type="password" id="id_password2" name="password2" placeholder="" required>
+                        <label for="id_password2">Confirmer le mot de passe</label>
+                    </div>
+                    {% if form.password2.help_text %}
+                        <span class="tooltip"><i class="fa-solid fa-circle-info"></i>
+                            <span class="tooltiptext">{{ form.password2.help_text }}</span>
+                        </span>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                </div>
+                {% if form.password2.errors %}
+                    <div class="error-message">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+
+            <input class="custom-button btn_fonce" type="submit" value="Je m'inscris !" class="submit-button">
+        </div>
+    </form>
+
+    <p><a href="{% url 'accounts:login' %}">Déjà inscrit ?</a></p>
+
+{% endblock content %}
+
+{% block extra_js %}
+{% endblock extra_js %}

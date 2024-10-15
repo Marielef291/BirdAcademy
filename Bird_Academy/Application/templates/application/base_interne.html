@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bird Academy</title>
+    <link rel="stylesheet" href="{% static 'application/style_interne.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <header></header>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo"><img id="logo" src="{% static 'application/images/icone2.png' %}" alt="Logo Bird Academy" /></a>
+        <div class="nav-links">
+            <ul>
+                <!-- Ajouter des oiseaux -->
+                <li class="{% if request.resolver_match.url_name == 'addBird' %}active{% endif %}">
+                    <a href="{% url 'addBird'  %}">Ajouter des oiseaux</a>
+                </li>
+
+                <!-- Test de connaissance -->
+                <li class="{% if request.resolver_match.url_name == 'quizz' %}active{% endif %}">
+                    <a href="{% url 'quizz' %}">Test de connaissance</a>
+                </li>
+
+                <!-- Déconnexion -->
+                <li class="{% if request.resolver_match.url_name == 'accounts:logout' %}active{% endif %}">
+                    <a href="{% url 'accounts:logout' %}">Deconnexion</a>
+                </li>
+            </ul>
+        </div>
+        <i class="fa-solid fa-bars menu-hamburger"></i>
+    </nav>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{% static 'application/script_navbar.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
